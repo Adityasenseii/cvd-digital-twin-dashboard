@@ -868,12 +868,23 @@ with tab1:
             
             # Feature importance visualization
             st.markdown("### 🔍 Risk Factor Analysis")
-            
-            # Simulated feature importance
+
+            # Calculate DYNAMIC feature importance based on actual patient features
+            feature_values = features[:10] if len(features) >= 10 else list(features) + [0] * (10 - len(features))
+            feature_names_display = ['Age', 'Cholesterol', 'Blood Pressure', 'Heart Rate', 'ECG Abnormality', 
+                                    'Family History', 'Smoking', 'Diabetes', 'Exercise', 'BMI']
+
+            # Normalize feature values to get relative importance
+            feature_values_normalized = np.abs(feature_values)
+            total = np.sum(feature_values_normalized)
+            if total > 0:
+                importances = feature_values_normalized / total
+            else:
+                importances = np.ones(10) / 10
+
             feature_importance = pd.DataFrame({
-                'Feature': ['Age', 'Cholesterol', 'Blood Pressure', 'Heart Rate', 'ECG Abnormality', 
-                           'Family History', 'Smoking', 'Diabetes', 'Exercise', 'BMI'],
-                'Importance': [0.25, 0.22, 0.18, 0.12, 0.08, 0.05, 0.04, 0.03, 0.02, 0.01],
+                'Feature': feature_names_display,
+                'Importance': importances,
                 'Category': ['Demographic', 'Lab Value', 'Vital Sign', 'Vital Sign', 'Diagnostic',
                             'History', 'Lifestyle', 'Comorbidity', 'Lifestyle', 'Demographic']
             }).sort_values('Importance', ascending=True)
