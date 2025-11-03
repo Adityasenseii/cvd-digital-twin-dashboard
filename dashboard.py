@@ -303,6 +303,8 @@ def check_required_files():
 def load_models_and_data():
     """Load all required models and data (cached for performance)"""
     try:
+        current_dir = Path(__file__).parent
+        
         # Check for required files first
         missing_files = check_required_files()
         if missing_files:
@@ -314,31 +316,31 @@ def load_models_and_data():
         with st.spinner('🔄 Initializing AI models and knowledge base...'):
             # Load ML models with error handling
             try:
-                xgb_model = joblib.load('model_XGBoost.pkl')
+                xgb_model = joblib.load(str(current_dir / 'model_XGBoost.pkl'))
             except Exception as e:
                 return {'error': 'xgb_load', 'message': str(e)}
             
             try:
-                rf_model = joblib.load('model_RandomForest.pkl')
+                rf_model = joblib.load(str(current_dir / 'model_RandomForest.pkl'))
             except Exception as e:
                 return {'error': 'rf_load', 'message': str(e)}
             
             # Load knowledge graph
             try:
-                kg = nx.read_graphml('cardiovascular_knowledge_graph.graphml')
+                kg = nx.read_graphml(str(current_dir / 'cardiovascular_knowledge_graph.graphml'))
             except Exception as e:
                 return {'error': 'kg_load', 'message': str(e)}
             
             # Load ontology
             try:
-                with open('cvd_ontology.json', 'r') as f:
+                with open(current_dir / 'cvd_ontology.json', 'r') as f:
                     ontology = json.load(f)
             except Exception as e:
                 return {'error': 'ontology_load', 'message': str(e)}
             
             # Load test data
             try:
-                test_df = pd.read_csv('test_processed.csv')
+                test_df = pd.read_csv(str(current_dir / 'test_processed.csv'))
             except Exception as e:
                 return {'error': 'data_load', 'message': str(e)}
             
@@ -359,7 +361,7 @@ def load_models_and_data():
                         return self.network(x)
                 
                 nn_model = DigitalTwinMLP(input_dim)
-                nn_model.load_state_dict(torch.load('model_MLP.pth', map_location='cpu'))
+                nn_model.load_state_dict(torch.load(str(current_dir / 'model_MLP.pth'), map_location='cpu'))
                 nn_model.eval()
             except Exception as e:
                 return {'error': 'nn_load', 'message': str(e)}
