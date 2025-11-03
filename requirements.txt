@@ -8,4 +8,3 @@ networkx==3.4.2
 scikit-learn==1.5.2
 xgboost==2.0.3
 lightgbm==4.3.0
-catboost==1.2.3
