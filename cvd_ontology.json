@@ -1,0 +1,325 @@
+{
+    "diseases": {
+        "coronary_artery_disease": {
+            "name": "Coronary Artery Disease",
+            "description": "Narrowing of coronary arteries",
+            "risk_factors": [
+                "hypertension",
+                "high_cholesterol",
+                "smoking",
+                "diabetes",
+                "obesity"
+            ],
+            "symptoms": [
+                "chest_pain",
+                "shortness_of_breath",
+                "fatigue"
+            ],
+            "progression_stages": [
+                "atherosclerosis",
+                "stable_angina",
+                "unstable_angina",
+                "myocardial_infarction"
+            ],
+            "icd10": "I25.1"
+        },
+        "myocardial_infarction": {
+            "name": "Myocardial Infarction",
+            "description": "Heart attack due to blocked blood flow",
+            "risk_factors": [
+                "coronary_artery_disease",
+                "hypertension",
+                "smoking"
+            ],
+            "symptoms": [
+                "severe_chest_pain",
+                "arm_pain",
+                "nausea",
+                "sweating"
+            ],
+            "biomarkers": [
+                "elevated_troponin",
+                "elevated_ck_mb"
+            ],
+            "icd10": "I21.9"
+        },
+        "heart_failure": {
+            "name": "Heart Failure",
+            "description": "Heart cannot pump blood effectively",
+            "risk_factors": [
+                "myocardial_infarction",
+                "hypertension",
+                "valve_disease"
+            ],
+            "symptoms": [
+                "shortness_of_breath",
+                "fatigue",
+                "edema"
+            ],
+            "types": [
+                "systolic",
+                "diastolic"
+            ],
+            "icd10": "I50.9"
+        },
+        "arrhythmia": {
+            "name": "Arrhythmia",
+            "description": "Irregular heart rhythm",
+            "types": [
+                "atrial_fibrillation",
+                "ventricular_tachycardia",
+                "bradycardia"
+            ],
+            "risk_factors": [
+                "coronary_artery_disease",
+                "hypertension"
+            ],
+            "symptoms": [
+                "palpitations",
+                "dizziness",
+                "syncope"
+            ],
+            "icd10": "I49.9"
+        },
+        "hypertension": {
+            "name": "Hypertension",
+            "description": "High blood pressure",
+            "criteria": "BP >= 140/90 mmHg",
+            "risk_factors": [
+                "obesity",
+                "high_salt_diet",
+                "stress",
+                "genetics"
+            ],
+            "complications": [
+                "stroke",
+                "myocardial_infarction",
+                "kidney_disease"
+            ],
+            "icd10": "I10"
+        }
+    },
+    "treatments": {
+        "beta_blockers": {
+            "name": "Beta Blockers",
+            "mechanism": "Reduces heart rate and blood pressure",
+            "indications": [
+                "hypertension",
+                "coronary_artery_disease",
+                "heart_failure",
+                "arrhythmia"
+            ],
+            "examples": [
+                "metoprolol",
+                "atenolol",
+                "carvedilol"
+            ],
+            "contraindications": [
+                "severe_bradycardia",
+                "asthma"
+            ],
+            "side_effects": [
+                "fatigue",
+                "dizziness",
+                "cold_extremities"
+            ],
+            "efficacy_bp_reduction": "10-15 mmHg systolic"
+        },
+        "statins": {
+            "name": "Statins",
+            "mechanism": "Reduces cholesterol synthesis",
+            "indications": [
+                "high_cholesterol",
+                "coronary_artery_disease",
+                "stroke_prevention"
+            ],
+            "examples": [
+                "atorvastatin",
+                "simvastatin",
+                "rosuvastatin"
+            ],
+            "side_effects": [
+                "muscle_pain",
+                "liver_enzyme_elevation"
+            ],
+            "efficacy_ldl_reduction": "30-50%"
+        },
+        "ace_inhibitors": {
+            "name": "ACE Inhibitors",
+            "mechanism": "Blocks angiotensin-converting enzyme",
+            "indications": [
+                "hypertension",
+                "heart_failure",
+                "post_mi"
+            ],
+            "examples": [
+                "lisinopril",
+                "enalapril",
+                "ramipril"
+            ],
+            "side_effects": [
+                "dry_cough",
+                "hyperkalemia",
+                "angioedema"
+            ],
+            "efficacy_bp_reduction": "10-15 mmHg systolic"
+        },
+        "anticoagulants": {
+            "name": "Anticoagulants",
+            "mechanism": "Prevents blood clot formation",
+            "indications": [
+                "atrial_fibrillation",
+                "deep_vein_thrombosis",
+                "pulmonary_embolism"
+            ],
+            "examples": [
+                "warfarin",
+                "apixaban",
+                "rivaroxaban"
+            ],
+            "monitoring": "INR for warfarin",
+            "side_effects": [
+                "bleeding_risk"
+            ]
+        },
+        "aspirin": {
+            "name": "Aspirin",
+            "mechanism": "Antiplatelet aggregation",
+            "indications": [
+                "coronary_artery_disease",
+                "post_mi",
+                "stroke_prevention"
+            ],
+            "dose": "75-325 mg daily",
+            "side_effects": [
+                "gastric_irritation",
+                "bleeding_risk"
+            ]
+        }
+    },
+    "risk_factors": {
+        "modifiable": {
+            "smoking": {
+                "impact": "high",
+                "intervention": "smoking_cessation"
+            },
+            "hypertension": {
+                "impact": "high",
+                "intervention": "medication_lifestyle"
+            },
+            "high_cholesterol": {
+                "impact": "high",
+                "intervention": "statins_diet"
+            },
+            "diabetes": {
+                "impact": "high",
+                "intervention": "glucose_control"
+            },
+            "obesity": {
+                "impact": "moderate",
+                "intervention": "weight_loss"
+            },
+            "sedentary_lifestyle": {
+                "impact": "moderate",
+                "intervention": "exercise"
+            },
+            "poor_diet": {
+                "impact": "moderate",
+                "intervention": "dietary_changes"
+            }
+        },
+        "non_modifiable": {
+            "age": {
+                "threshold": "> 65 years"
+            },
+            "male_sex": {
+                "relative_risk": "1.5-2x"
+            },
+            "family_history": {
+                "relative_risk": "2-3x"
+            }
+        }
+    },
+    "diagnostics": {
+        "ecg": {
+            "name": "Electrocardiogram",
+            "detects": [
+                "arrhythmia",
+                "myocardial_infarction",
+                "ischemia"
+            ],
+            "findings": {
+                "st_elevation": "acute_mi",
+                "st_depression": "ischemia",
+                "q_waves": "old_mi",
+                "atrial_fibrillation": "irregular_rr"
+            }
+        },
+        "echocardiogram": {
+            "name": "Echocardiogram",
+            "measures": [
+                "ejection_fraction",
+                "wall_motion",
+                "valve_function"
+            ],
+            "thresholds": {
+                "normal_ef": "> 55%",
+                "reduced_ef": "< 40%"
+            }
+        },
+        "cardiac_catheterization": {
+            "name": "Cardiac Catheterization",
+            "purpose": "Visualize coronary arteries",
+            "detects": [
+                "stenosis",
+                "occlusion"
+            ]
+        },
+        "blood_tests": {
+            "name": "Blood Tests",
+            "biomarkers": {
+                "troponin": {
+                    "elevated_in": "myocardial_infarction"
+                },
+                "bnp": {
+                    "elevated_in": "heart_failure"
+                },
+                "lipid_panel": {
+                    "assesses": "cholesterol_levels"
+                },
+                "crp": {
+                    "indicates": "inflammation"
+                }
+            }
+        }
+    },
+    "guidelines": {
+        "hypertension_management": {
+            "bp_targets": {
+                "general": "< 130/80 mmHg",
+                "diabetes": "< 130/80 mmHg",
+                "elderly": "< 140/90 mmHg"
+            },
+            "treatment_algorithm": [
+                "lifestyle_modifications",
+                "single_agent_therapy",
+                "dual_therapy",
+                "triple_therapy"
+            ]
+        },
+        "stemi_treatment": {
+            "time_critical": "Door-to-balloon < 90 minutes",
+            "immediate_treatment": [
+                "aspirin",
+                "anticoagulation",
+                "reperfusion"
+            ],
+            "secondary_prevention": [
+                "dual_antiplatelet",
+                "statin",
+                "beta_blocker",
+                "ace_inhibitor"
+            ]
+        }
+    }
+}

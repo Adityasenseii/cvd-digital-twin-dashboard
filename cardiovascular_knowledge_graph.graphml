@@ -1,0 +1,206 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"><key id="d7" for="edge" attr.name="weight" attr.type="double"/>
+<key id="d6" for="edge" attr.name="relationship" attr.type="string"/>
+<key id="d5" for="node" attr.name="mechanism" attr.type="string"/>
+<key id="d4" for="node" attr.name="impact" attr.type="string"/>
+<key id="d3" for="node" attr.name="icd10" attr.type="string"/>
+<key id="d2" for="node" attr.name="description" attr.type="string"/>
+<key id="d1" for="node" attr.name="name" attr.type="string"/>
+<key id="d0" for="node" attr.name="type" attr.type="string"/>
+<graph edgedefault="directed"><node id="coronary_artery_disease">
+  <data key="d0">disease</data>
+  <data key="d1">Coronary Artery Disease</data>
+  <data key="d2">Narrowing of coronary arteries</data>
+  <data key="d3">I25.1</data>
+</node>
+<node id="myocardial_infarction">
+  <data key="d0">disease</data>
+  <data key="d1">Myocardial Infarction</data>
+  <data key="d2">Heart attack due to blocked blood flow</data>
+  <data key="d3">I21.9</data>
+</node>
+<node id="heart_failure">
+  <data key="d0">disease</data>
+  <data key="d1">Heart Failure</data>
+  <data key="d2">Heart cannot pump blood effectively</data>
+  <data key="d3">I50.9</data>
+</node>
+<node id="arrhythmia">
+  <data key="d0">disease</data>
+  <data key="d1">Arrhythmia</data>
+  <data key="d2">Irregular heart rhythm</data>
+  <data key="d3">I49.9</data>
+</node>
+<node id="hypertension">
+  <data key="d0">risk_factor_modifiable</data>
+  <data key="d1">Hypertension</data>
+  <data key="d2">High blood pressure</data>
+  <data key="d3">I10</data>
+  <data key="d4">high</data>
+</node>
+<node id="beta_blockers">
+  <data key="d0">treatment</data>
+  <data key="d1">Beta Blockers</data>
+  <data key="d5">Reduces heart rate and blood pressure</data>
+</node>
+<node id="statins">
+  <data key="d0">treatment</data>
+  <data key="d1">Statins</data>
+  <data key="d5">Reduces cholesterol synthesis</data>
+</node>
+<node id="ace_inhibitors">
+  <data key="d0">treatment</data>
+  <data key="d1">ACE Inhibitors</data>
+  <data key="d5">Blocks angiotensin-converting enzyme</data>
+</node>
+<node id="anticoagulants">
+  <data key="d0">treatment</data>
+  <data key="d1">Anticoagulants</data>
+  <data key="d5">Prevents blood clot formation</data>
+</node>
+<node id="aspirin">
+  <data key="d0">treatment</data>
+  <data key="d1">Aspirin</data>
+  <data key="d5">Antiplatelet aggregation</data>
+</node>
+<node id="smoking">
+  <data key="d0">risk_factor_modifiable</data>
+  <data key="d4">high</data>
+</node>
+<node id="high_cholesterol">
+  <data key="d0">risk_factor_modifiable</data>
+  <data key="d4">high</data>
+</node>
+<node id="diabetes">
+  <data key="d0">risk_factor_modifiable</data>
+  <data key="d4">high</data>
+</node>
+<node id="obesity">
+  <data key="d0">risk_factor_modifiable</data>
+  <data key="d4">moderate</data>
+</node>
+<node id="sedentary_lifestyle">
+  <data key="d0">risk_factor_modifiable</data>
+  <data key="d4">moderate</data>
+</node>
+<node id="poor_diet">
+  <data key="d0">risk_factor_modifiable</data>
+  <data key="d4">moderate</data>
+</node>
+<node id="age">
+  <data key="d0">risk_factor_non_modifiable</data>
+  <data key="d4"></data>
+</node>
+<node id="male_sex">
+  <data key="d0">risk_factor_non_modifiable</data>
+  <data key="d4"></data>
+</node>
+<node id="family_history">
+  <data key="d0">risk_factor_non_modifiable</data>
+  <data key="d4"></data>
+</node>
+<node id="ecg">
+  <data key="d0">diagnostic</data>
+  <data key="d1">Electrocardiogram</data>
+</node>
+<node id="echocardiogram">
+  <data key="d0">diagnostic</data>
+  <data key="d1">Echocardiogram</data>
+</node>
+<node id="cardiac_catheterization">
+  <data key="d0">diagnostic</data>
+  <data key="d1">Cardiac Catheterization</data>
+</node>
+<node id="blood_tests">
+  <data key="d0">diagnostic</data>
+  <data key="d1">Blood Tests</data>
+</node>
+<edge source="coronary_artery_disease" target="myocardial_infarction">
+  <data key="d6">increases_risk_of</data>
+  <data key="d7">0.8</data>
+</edge>
+<edge source="coronary_artery_disease" target="arrhythmia">
+  <data key="d6">increases_risk_of</data>
+  <data key="d7">0.8</data>
+</edge>
+<edge source="myocardial_infarction" target="heart_failure">
+  <data key="d6">increases_risk_of</data>
+  <data key="d7">0.8</data>
+</edge>
+<edge source="hypertension" target="coronary_artery_disease">
+  <data key="d6">increases_risk_of</data>
+  <data key="d7">0.8</data>
+</edge>
+<edge source="hypertension" target="myocardial_infarction">
+  <data key="d6">causes</data>
+  <data key="d7">0.75</data>
+</edge>
+<edge source="hypertension" target="heart_failure">
+  <data key="d6">increases_risk_of</data>
+  <data key="d7">0.8</data>
+</edge>
+<edge source="hypertension" target="arrhythmia">
+  <data key="d6">increases_risk_of</data>
+  <data key="d7">0.8</data>
+</edge>
+<edge source="beta_blockers" target="hypertension">
+  <data key="d6">treats</data>
+  <data key="d7">0.9</data>
+</edge>
+<edge source="beta_blockers" target="coronary_artery_disease">
+  <data key="d6">treats</data>
+  <data key="d7">0.9</data>
+</edge>
+<edge source="beta_blockers" target="heart_failure">
+  <data key="d6">treats</data>
+  <data key="d7">0.9</data>
+</edge>
+<edge source="beta_blockers" target="arrhythmia">
+  <data key="d6">treats</data>
+  <data key="d7">0.9</data>
+</edge>
+<edge source="statins" target="high_cholesterol">
+  <data key="d6">treats</data>
+  <data key="d7">0.9</data>
+</edge>
+<edge source="statins" target="coronary_artery_disease">
+  <data key="d6">treats</data>
+  <data key="d7">0.9</data>
+</edge>
+<edge source="ace_inhibitors" target="hypertension">
+  <data key="d6">treats</data>
+  <data key="d7">0.9</data>
+</edge>
+<edge source="ace_inhibitors" target="heart_failure">
+  <data key="d6">treats</data>
+  <data key="d7">0.9</data>
+</edge>
+<edge source="aspirin" target="coronary_artery_disease">
+  <data key="d6">treats</data>
+  <data key="d7">0.9</data>
+</edge>
+<edge source="smoking" target="coronary_artery_disease">
+  <data key="d6">increases_risk_of</data>
+  <data key="d7">0.8</data>
+</edge>
+<edge source="smoking" target="myocardial_infarction">
+  <data key="d6">increases_risk_of</data>
+  <data key="d7">0.8</data>
+</edge>
+<edge source="high_cholesterol" target="coronary_artery_disease">
+  <data key="d6">increases_risk_of</data>
+  <data key="d7">0.8</data>
+</edge>
+<edge source="diabetes" target="coronary_artery_disease">
+  <data key="d6">increases_risk_of</data>
+  <data key="d7">0.8</data>
+</edge>
+<edge source="obesity" target="coronary_artery_disease">
+  <data key="d6">increases_risk_of</data>
+  <data key="d7">0.8</data>
+</edge>
+<edge source="obesity" target="hypertension">
+  <data key="d6">increases_risk_of</data>
+  <data key="d7">0.8</data>
+</edge>
+</graph></graphml>
