@@ -1,20 +1,14 @@
-[theme]
-primaryColor = "#667eea"
-backgroundColor = "#FFFFFF"
-secondaryBackgroundColor = "#f0f2f6"
-textColor = "#262730"
-font = "sans serif"
-
 [server]
 headless = true
+fileWatcherType = "none"
+runOnSave = false
 enableCORS = false
 enableXsrfProtection = false
 maxUploadSize = 200
-fileWatcherType = "none"
-runOnSave = false
 
 [browser]
 gatherUsageStats = false
+serverAddress = "0.0.0.0"
 
 [runner]
 fastReruns = false
