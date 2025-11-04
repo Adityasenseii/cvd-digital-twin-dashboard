@@ -739,60 +739,66 @@ with tab1:
             with col2:
                 # Risk interpretation with clinical guidance
                 st.markdown("### 📋 Clinical Interpretation")
-                
+
                 if prediction['risk_category'] == 'Low':
                     st.markdown("""
                     <div class="alert-success">
-                        <h4>✅ Low Risk Profile</h4>
-                        <p><strong>Recommendation:</strong> Continue healthy lifestyle</p>
-                        <ul>
-                            <li>✓ Maintain regular physical activity</li>
-                            <li>✓ Annual health check-ups</li>
-                            <li>✓ Monitor blood pressure quarterly</li>
-                            <li>✓ Balanced diet (Mediterranean recommended)</li>
-                        </ul>
-                        <p><strong>Next Review:</strong> 12 months</p>
+                        <h4 style="margin-top: 0; color: white;">✅ Low Risk Profile</h4>
+                        <p style="margin: 0.5rem 0;"><strong>Recommendation:</strong> Continue healthy lifestyle</p>
+                        <div style="margin: 1rem 0;">
+                            <p style="margin: 0.3rem 0;">✓ Maintain regular physical activity</p>
+                            <p style="margin: 0.3rem 0;">✓ Annual health check-ups</p>
+                            <p style="margin: 0.3rem 0;">✓ Monitor blood pressure quarterly</p>
+                            <p style="margin: 0.3rem 0;">✓ Balanced diet (Mediterranean recommended)</p>
+                        </div>
+                        <p style="margin: 0.5rem 0 0 0;"><strong>Next Review:</strong> 12 months</p>
                     </div>
                     """, unsafe_allow_html=True)
                 elif prediction['risk_category'] == 'Moderate':
                     st.markdown("""
                     <div class="alert-warning">
-                        <h4>⚠️ Moderate Risk Profile</h4>
-                        <p><strong>Recommendation:</strong> Preventive intervention required</p>
-                        <ul>
-                            <li>⚡ Lifestyle modifications (diet, exercise)</li>
-                            <li>⚡ Monthly blood pressure monitoring</li>
-                            <li>⚡ Consider statin therapy (consult physician)</li>
-                            <li>⚡ Stress management techniques</li>
-                            <li>⚡ Weight optimization if BMI > 25</li>
-                        </ul>
-                        <p><strong>Next Review:</strong> 3-6 months</p>
+                        <h4 style="margin-top: 0; color: white;">⚠️ Moderate Risk Profile</h4>
+                        <p style="margin: 0.5rem 0;"><strong>Recommendation:</strong> Preventive intervention required</p>
+                        <div style="margin: 1rem 0;">
+                            <p style="margin: 0.3rem 0;">⚡ Lifestyle modifications (diet, exercise)</p>
+                            <p style="margin: 0.3rem 0;">⚡ Monthly blood pressure monitoring</p>
+                            <p style="margin: 0.3rem 0;">⚡ Consider statin therapy (consult physician)</p>
+                            <p style="margin: 0.3rem 0;">⚡ Stress management techniques</p>
+                            <p style="margin: 0.3rem 0;">⚡ Weight optimization if BMI &gt; 25</p>
+                        </div>
+                        <p style="margin: 0.5rem 0 0 0;"><strong>Next Review:</strong> 3-6 months</p>
                     </div>
                     """, unsafe_allow_html=True)
                 else:
                     st.markdown("""
                     <div class="alert-critical">
-                        <h4>🚨 High Risk - Urgent Attention Required</h4>
-                        <p><strong>Recommendation:</strong> Immediate clinical intervention</p>
-                        <ul>
-                            <li>🔴 Schedule cardiology consultation within 7 days</li>
-                            <li>🔴 Start pharmacotherapy (as prescribed)</li>
-                            <li>🔴 Daily vital signs monitoring</li>
-                            <li>🔴 ECG and comprehensive workup</li>
-                            <li>🔴 Aggressive risk factor management</li>
-                        </ul>
-                        <p><strong>Next Review:</strong> 2 weeks (or sooner if symptoms)</p>
+                        <h4 style="margin-top: 0; color: white;">🚨 High Risk - Urgent Attention Required</h4>
+                        <p style="margin: 0.5rem 0;"><strong>Recommendation:</strong> Immediate clinical intervention</p>
+                        <div style="margin: 1rem 0;">
+                            <p style="margin: 0.3rem 0;">🔴 Schedule cardiology consultation within 7 days</p>
+                            <p style="margin: 0.3rem 0;">🔴 Start pharmacotherapy (as prescribed)</p>
+                            <p style="margin: 0.3rem 0;">🔴 Daily vital signs monitoring</p>
+                            <p style="margin: 0.3rem 0;">🔴 ECG and comprehensive workup</p>
+                            <p style="margin: 0.3rem 0;">🔴 Aggressive risk factor management</p>
+                        </div>
+                        <p style="margin: 0.5rem 0 0 0;"><strong>Next Review:</strong> 2 weeks (or sooner if symptoms)</p>
                     </div>
                     """, unsafe_allow_html=True)
                 
                 # Confidence indicator
                 confidence_pct = prediction['confidence_level'] * 100
                 st.markdown(f"""
-                <div style="margin-top: 1rem; padding: 1rem; background: #f8f9fa; border-radius: 8px;">
-                    <strong>🎯 Prediction Confidence:</strong> {confidence_pct:.1f}%
-                    <div style="margin-top: 0.5rem;">
-                        <progress value="{confidence_pct}" max="100" style="width: 100%; height: 20px;"></progress>
+                <div style="margin-top: 1rem; padding: 1rem; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    <strong style="font-size: 1.1rem; color: #667eea;">🎯 Prediction Confidence</strong>
+                    <div style="margin-top: 0.8rem;">
+                        <div style="background: #e9ecef; border-radius: 10px; height: 24px; overflow: hidden; position: relative;">
+                            <div style="background: linear-gradient(90deg, #667eea 0%, #764ba2 100%); width: {confidence_pct}%; height: 100%; border-radius: 10px; transition: width 0.5s ease;"></div>
+                            <span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-weight: 600; color: #2d3748; font-size: 0.9rem;">{confidence_pct:.1f}%</span>
+                        </div>
                     </div>
+                    <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #6c757d;">
+                        {'High confidence - Models agree strongly' if confidence_pct > 85 else 'Moderate confidence - Some model variance' if confidence_pct > 70 else 'Lower confidence - Consider additional tests'}
+                    </p>
                 </div>
                 """, unsafe_allow_html=True)
             
@@ -1573,62 +1579,52 @@ with tab5:
             
             # Clinical Interpretation
             st.markdown("## 🏥 Clinical Interpretation")
-            
+
             if prediction['risk_category'] == 'High':
+                st.error("⚠️ HIGH RISK ALERT - IMMEDIATE ATTENTION REQUIRED")
+                st.markdown("This patient exhibits a high risk score for cardiovascular disease. **Immediate clinical intervention is strongly recommended.**")
+                
+                st.markdown("#### Immediate Actions Required:")
                 st.markdown("""
-                <div class="alert-critical">
-                    <h3>⚠️ HIGH RISK ALERT - IMMEDIATE ATTENTION REQUIRED</h3>
-                    <p>This patient exhibits a high risk score for cardiovascular disease. <strong>Immediate clinical intervention is strongly recommended.</strong></p>
-                    
-                    <h4>Immediate Actions Required:</h4>
-                    <ul>
-                        <li>🔴 Schedule urgent cardiology consultation (within 7 days)</li>
-                        <li>🔴 Initiate pharmacotherapy as per guidelines</li>
-                        <li>🔴 Order comprehensive cardiac workup (ECG, Echo, Stress test)</li>
-                        <li>🔴 Begin daily vital signs monitoring</li>
-                        <li>🔴 Patient education on warning signs and symptoms</li>
-                    </ul>
-                    
-                    <h4>Risk Factors Identified:</h4>
-                    <ul>
-                        <li>Elevated cardiovascular risk markers</li>
-                        <li>Multiple machine learning models concordant for high risk</li>
-                        <li>Recommendation for aggressive risk factor management</li>
-                    </ul>
-                </div>
-                """, unsafe_allow_html=True)
+                - 🔴 Schedule urgent cardiology consultation (within 7 days)
+                - 🔴 Initiate pharmacotherapy as per guidelines
+                - 🔴 Order comprehensive cardiac workup (ECG, Echo, Stress test)
+                - 🔴 Begin daily vital signs monitoring
+                - 🔴 Patient education on warning signs and symptoms
+                """)
+                
+                st.markdown("#### Risk Factors Identified:")
+                st.markdown("""
+                - Elevated cardiovascular risk markers
+                - Multiple machine learning models concordant for high risk
+                - Recommendation for aggressive risk factor management
+                """)
+
             elif prediction['risk_category'] == 'Moderate':
+                st.warning("⚠️ MODERATE RISK - PREVENTIVE INTERVENTION RECOMMENDED")
+                st.markdown("Patient shows moderate cardiovascular risk. Preventive measures and close monitoring are advised.")
+                
+                st.markdown("#### Recommended Actions:")
                 st.markdown("""
-                <div class="alert-warning">
-                    <h3>⚠️ MODERATE RISK - PREVENTIVE INTERVENTION RECOMMENDED</h3>
-                    <p>Patient shows moderate cardiovascular risk. Preventive measures and close monitoring are advised.</p>
-                    
-                    <h4>Recommended Actions:</h4>
-                    <ul>
-                        <li>🟡 Schedule cardiology consultation within 4 weeks</li>
-                        <li>🟡 Consider pharmacotherapy (discuss risk/benefit)</li>
-                        <li>🟡 Aggressive lifestyle modifications</li>
-                        <li>🟡 Monthly blood pressure and lipid monitoring</li>
-                        <li>🟡 Re-assessment in 3-6 months</li>
-                    </ul>
-                </div>
-                """, unsafe_allow_html=True)
+                - 🟡 Schedule cardiology consultation within 4 weeks
+                - 🟡 Consider pharmacotherapy (discuss risk/benefit)
+                - 🟡 Aggressive lifestyle modifications
+                - 🟡 Monthly blood pressure and lipid monitoring
+                - 🟡 Re-assessment in 3-6 months
+                """)
+
             else:
+                st.success("✅ LOW RISK - CONTINUE PREVENTIVE CARE")
+                st.markdown("Patient demonstrates low cardiovascular risk. Continue with standard preventive care and healthy lifestyle.")
+                
+                st.markdown("#### Maintenance Recommendations:")
                 st.markdown("""
-                <div class="alert-success">
-                    <h3>✅ LOW RISK - CONTINUE PREVENTIVE CARE</h3>
-                    <p>Patient demonstrates low cardiovascular risk. Continue with standard preventive care and healthy lifestyle.</p>
-                    
-                    <h4>Maintenance Recommendations:</h4>
-                    <ul>
-                        <li>✅ Annual health check-ups</li>
-                        <li>✅ Maintain healthy diet and regular exercise</li>
-                        <li>✅ Monitor blood pressure quarterly</li>
-                        <li>✅ Continue current health maintenance plan</li>
-                        <li>✅ Re-assessment in 12 months</li>
-                    </ul>
-                </div>
-                """, unsafe_allow_html=True)
+                - ✅ Annual health check-ups
+                - ✅ Maintain healthy diet and regular exercise
+                - ✅ Monitor blood pressure quarterly
+                - ✅ Continue current health maintenance plan
+                - ✅ Re-assessment in 12 months
+                """)
             
             st.markdown("---")
             
@@ -1718,11 +1714,22 @@ with tab5:
             # Clinical Notes
             st.markdown("## 📝 Clinical Notes & Recommendations")
             
+            st.markdown("""
+            <div style="background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%); padding: 1rem; border-radius: 12px; border: 2px solid #667eea; margin-bottom: 1rem;">
+                <h4 style="margin-top: 0; color: #667eea;">📝 Additional Clinical Notes</h4>
+                <p style="color: #6c757d; font-size: 0.9rem; margin-bottom: 0.5rem;">Add custom observations, patient concerns, or treatment modifications</p>
+            </div>
+            """, unsafe_allow_html=True)
+
             clinical_notes = st.text_area(
-                "Physician Notes (Optional):",
+                "",  # Empty label since we added it above
                 height=150,
-                placeholder="Enter additional clinical observations, patient concerns, or specific treatment considerations..."
+                placeholder="Example: Patient reports occasional chest discomfort during exercise. Family history of early MI. Consider stress test before final treatment decision...",
+                help="These notes will be included in the downloadable report"
             )
+
+            if clinical_notes:
+                st.info(f"📄 Note saved: {len(clinical_notes)} characters")
             
             st.markdown("---")
             
@@ -1788,6 +1795,24 @@ with tab6:
         else:
             # Cohort Analysis
             st.markdown("### 👥 Population Cohort Analysis")
+
+            # Add explanation expander
+            with st.expander("ℹ️ What is Cohort Analysis?", expanded=False):
+                st.markdown("""
+                **Cohort Analysis** compares the current patient against a reference population to provide context for the risk assessment.
+                
+                📊 **What it shows:**
+                - **Percentile Ranking:** Where this patient ranks compared to others (e.g., "higher risk than 75% of patients")
+                - **Risk Distribution:** How risk scores are spread across the population
+                - **Category Breakdown:** Percentage of patients in High/Moderate/Low risk categories
+                
+                🎯 **Clinical Value:**
+                - Helps identify if a patient is an outlier requiring special attention
+                - Provides population-based context for treatment decisions
+                - Enables comparative analysis against similar patient demographics
+                
+                📈 **Current Cohort:** Analyzing {len(resources['test_data'])} patients from the test dataset
+                """)
             
             # Simulate cohort data
             cohort_size = len(resources['test_data'])
